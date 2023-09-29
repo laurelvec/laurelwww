@@ -1,0 +1,17 @@
+﻿@using Laurel_site.Utils;
+@code {
+    private MathChallenge mathChallenge = new MathChallenge();
+    private int userAnswer;
+
+    private void CheckAnswer()
+    {
+        bool isCorrect = mathChallenge.IsCorrectAnswer(userAnswer);
+        // Handle the answer (e.g., show a message based on correctness)
+    }
+}
+
+<div>
+    <p>@mathChallenge.Question</p>
+    <input type="number" @bind="userAnswer" />
+    <button @onclick="CheckAnswer">Check Answer</button>
+</div>
