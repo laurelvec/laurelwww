@@ -22,7 +22,7 @@ public static class GeoCalculator
         double c = 2 * Math.Atan2(Math.Sqrt(a), Math.Sqrt(1 - a));
 
         // Distance in kilometers
-        return EarthRadiusKm * c;
+        return (EarthRadiusKm * c) * 0.621371192;
     }
 
     private static double DegreesToRadians(double degrees)
