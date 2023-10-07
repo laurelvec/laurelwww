@@ -63,7 +63,4 @@ public class Venue
     //[ForeignKey(nameof(VE))]
     public int? UpdatedById { get; set; }
     //public VE UpdatedBy { get; set; }
-
-
-
 }

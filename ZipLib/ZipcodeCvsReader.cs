@@ -1,22 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.VisualBasic.FileIO;
+﻿using Microsoft.VisualBasic.FileIO;
 using ZipLib; // For TextFieldParser
 
 public class CsvReader
 {
     public static List<ZipModel> ReadCsv(string path)
     {
-        var records = new List<ZipModel>();
+        List<ZipModel> records = new();
 
-        using (TextFieldParser parser = new TextFieldParser(path))
+        using (TextFieldParser parser = new(path))
         {
             parser.TextFieldType = FieldType.Delimited;
             parser.SetDelimiters(",");
 
             // Skip header if needed
             if (!parser.EndOfData)
-                parser.ReadLine();
+            {
+                _ = parser.ReadLine();
+            }
 
             while (!parser.EndOfData)
             {
@@ -41,15 +41,15 @@ public class CsvReader
     }
 }
 
-class Program
+internal class Program
 {
-    static void Main(string[] args)
+    private static void Main(string[] args)
     {
         string csvFilePath = "path_to_your_csv_file.csv";
 
         List<ZipModel> records = CsvReader.ReadCsv(csvFilePath);
 
-        foreach (var record in records)
+        foreach (ZipModel record in records)
         {
             Console.WriteLine($"Zip: {record.ZipCode}, Lat: {record.Lat}, Long: {record.Long}");
         }
